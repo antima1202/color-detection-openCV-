@@ -166,18 +166,6 @@ int main(int argc, char** argv)
             break;
         }
 
-       
-        /*/morphological opening (removes small objects from the foreground)
-        erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
-        dilate(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
-
-        //morphological closing (removes small holes from the foreground)
-        dilate(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
-        erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
-
-        //Calculate the moments of the thresholded image
-        Moments oMoments = moments(imgThresholded);*/
-
         double dM01 = oMoments.m01;
         double dM10 = oMoments.m10;
         double dArea = oMoments.m00;
@@ -193,13 +181,7 @@ int main(int argc, char** argv)
 
             if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
             {
-                //Point p1(30, 30);
-                //iLastX = 255;
-                //iLastY = 255;
-
-                // Bottom Right Corner
-                            //Draw a red line from the previous point to the current point
-                            //line(imgLines, Point(posX, posY), Point(iLastX, iLastY), Scalar(0, 0, 255), 2);
+             
                 rectangle(imgOriginal, Point(px, py), Point(iLastX+100, iLastY+100), Scalar(0, 255, 0), 2, LINE_8);
             }
 
